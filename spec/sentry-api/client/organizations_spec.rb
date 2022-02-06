@@ -40,6 +40,7 @@ describe SentryApi::Client do
     before do
       stub_get("/organizations/sentry-sc/", "organization")
       @organization = SentryApi.organization
+      binding.b
     end
 
     it "should get the correct resource" do

@@ -46,7 +46,6 @@ class SentryApi::Client
     # @option options [String] :slug an optional new slug for the organization. Needs to be available and unique.
     # @return [SentryApi::ObjectifiedHash]
     def update_organization(options={})
-      binding.b
       put("/organizations/#{@default_org_slug}/", body: options)
     end
 
