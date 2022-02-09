@@ -44,7 +44,6 @@ module SentryApi
     def get(path, options={})
       set_httparty_config(options)
       set_authorization_header(options)
-      binding.b
       validate self.class.get(@endpoint + path, options)
     end
 
@@ -99,7 +98,7 @@ module SentryApi
                       when 503 then
                         Error::ServiceUnavailable
                     end
-
+      binding.b
       fail error_klass.new(response) if error_klass
 
       parsed = response.parsed_response
