@@ -9,7 +9,8 @@ class SentryApi::Client
     # @param member [Boolean] Restrict results to organizations which you have membership
     # @return [Array<SentryApi::ObjectifiedHash>]
     def organizations(member=false)
-      get("/organizations/", query: {member: member})
+      after = get("/organizations/", query: {member: member})
+      binding.b
     end
 
     # List an Organization’s Projects
