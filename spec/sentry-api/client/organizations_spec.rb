@@ -9,7 +9,6 @@ describe SentryApi::Client do
     end
 
     it "should get the correct resource" do
-      binding.b
       expect(a_get("/organizations/?member=false")).to have_been_made
     end
 
