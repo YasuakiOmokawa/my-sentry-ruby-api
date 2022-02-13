@@ -28,7 +28,7 @@ describe SentryApi::Client do
     it "should get the correct resource" do
       binding.b
       expect(a_get("/organizations/sentry-sc/projects/")).to have_been_made
-      p a_get("/organizations/sentry-sc/projects/")
+      pp a_get("/organizations/sentry-sc/projects/")
     end
 
     it "should return a paginated response of organization's projects" do
