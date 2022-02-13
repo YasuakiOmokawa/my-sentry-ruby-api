@@ -25,3 +25,9 @@ def m3
   end
 end
 
+@hoge = 'hoge'
+def defined_check
+  defined?(@hoge) ? @hoge : nil
+  # return defined?(@hoge) ? @hoge : nil
+end
+defined_check
