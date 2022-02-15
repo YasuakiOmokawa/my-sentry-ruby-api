@@ -22,6 +22,7 @@ describe SentryApi::Client do
   describe ".organization_projects" do
     before do
       # stub_get("/organizations/sentry-sc/projects/", "organization_projects")
+      binding.b
       @projects = SentryApi.organization_projects
     end
 
