@@ -31,3 +31,7 @@ def defined_check
   # return defined?(@hoge) ? @hoge : nil
 end
 defined_check
+
+def m4
+  get_hash.except(*EXCLUDES)
+end
