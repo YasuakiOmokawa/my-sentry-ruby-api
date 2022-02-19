@@ -7,8 +7,8 @@ module SentryApi
     # Creates a new API.
     # @raise [Error:MissingCredentials]
     def initialize(options={})
-      binding.b
       options = SentryApi.options.merge(options)
+      binding.b
       (Configuration::VALID_OPTIONS_KEYS).each do |key|
         send("#{key}=", options[key]) if options[key]
       end
