@@ -20,7 +20,7 @@ end
 
 RSpec.configure do |config|
   config.before(:all) do
-    SentryApi.endpoint = 'https://api.example.com/api/0'
+    SentryApi.endpoint = 'https://api.example.com/api/0/hoge'
     SentryApi.auth_token = 'secret'
     SentryApi.default_org_slug = 'sentry-sc'
   end
