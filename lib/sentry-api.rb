@@ -9,7 +9,6 @@ require 'sentry-api/api'
 require 'sentry-api/client'
 
 module SentryApi
-  binding.b
   extend Configuration
 
   # Alias for Sentry::Client.new

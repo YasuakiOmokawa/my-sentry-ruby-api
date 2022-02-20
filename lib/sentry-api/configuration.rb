@@ -13,7 +13,6 @@ module SentryApi
     # Sets all configuration options to their default values
     # when this module is extended.
     def self.extended(base)
-      binding.b
       base.reset
     end
 
