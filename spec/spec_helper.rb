@@ -30,8 +30,8 @@ end
 def stub_get(path, fixture, status_code=200)
   binding.b
   stub_request(:get, "#{SentryApi.endpoint}#{path}").
-      with(:headers => {'Authorization' => "Bearer #{SentryApi.auth_token}", 'Content-Type' => 'application/json'}).
-      to_return(body: load_fixture(fixture), status: status_code)
+      with(:headers => {'Authorization' => "Bearer #{SentryApi.auth_token}", 'Content-Type' => 'application/json'})
+      # to_return(body: load_fixture(fixture), status: status_code)
 end
 
 def a_get(path)
