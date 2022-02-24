@@ -44,7 +44,6 @@ module SentryApi
     def get(path, options={})
       set_httparty_config(options)
       set_authorization_header(options)
-      binding.b
       validate self.class.get(@endpoint + path, options)
     end
 
@@ -77,6 +76,7 @@ module SentryApi
     # Checks the response code for common errors.
     # Returns parsed response for successful requests.
     def validate(response)
+      binding.b
       error_klass = case response.code
                       when 400 then
                         Error::BadRequest
