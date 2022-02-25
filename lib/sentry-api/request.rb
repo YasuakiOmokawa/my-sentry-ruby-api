@@ -76,7 +76,6 @@ module SentryApi
     # Checks the response code for common errors.
     # Returns parsed response for successful requests.
     def validate(response)
-      binding.b
       error_klass = case response.code
                       when 400 then
                         Error::BadRequest
