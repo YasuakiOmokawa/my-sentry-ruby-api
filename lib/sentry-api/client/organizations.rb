@@ -20,6 +20,7 @@ class SentryApi::Client
     #
     # @return [Array<SentryApi::ObjectifiedHash>]
     def organization_projects
+      binding.b
       get("/organizations/#{@default_org_slug}/projects/")
     end
 
