@@ -24,8 +24,7 @@ describe SentryApi::Client do
       # stub_get("/organizations/sentry-sc/projects/", "organization_projects")
       binding.b
       stub_get("/organizations/?member=false", "organizations")
-      binding.b
-      p WebMock::StubRegistry.instance
+      pp WebMock::StubRegistry.instance
       @projects = SentryApi.organization_projects
     end
 
