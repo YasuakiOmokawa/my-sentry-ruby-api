@@ -26,7 +26,6 @@ describe SentryApi::Client do
       stub_get("/organizations/?member=false", "organizations")
       pp WebMock::StubRegistry.instance
       @projects = SentryApi.organization_projects
-      binding.b
     end
 
     it "should get the correct resource" do
