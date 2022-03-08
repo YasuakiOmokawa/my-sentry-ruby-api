@@ -27,7 +27,6 @@ describe SentryApi::Client do
     end
 
     it "should get the correct resource" do
-      binding.b
       expect(a_get("/organizations/sentry-sc/projects/")).to have_been_made
     end
 
