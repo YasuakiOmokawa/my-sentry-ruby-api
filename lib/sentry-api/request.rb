@@ -45,6 +45,7 @@ module SentryApi
       set_httparty_config(options)
       set_authorization_header(options)
       binding.b
+      p self.class.methods
       res = self.class.get(@endpoint + path, options)
       validate self.class.get(@endpoint + path, options)
     end
