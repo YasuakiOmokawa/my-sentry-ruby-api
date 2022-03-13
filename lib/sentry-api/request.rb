@@ -3,6 +3,10 @@ require 'json'
 
 module SentryApi
   # @private
+  class Double2
+    include ::RSpec::Mocks::ExampleMethods
+  end
+
   class Request
     include HTTMultiParty
 
@@ -45,8 +49,9 @@ module SentryApi
       set_httparty_config(options)
       set_authorization_header(options)
       binding.b
-      p self.class.methods
-      res = self.class.get(@endpoint + path, options)
+      res = Double2.new.double('http response double', {code: 200})
+      validate res
+      self.class.get(@endpoint + path, options)
       validate self.class.get(@endpoint + path, options)
     end
 
