@@ -49,9 +49,12 @@ module SentryApi
       set_httparty_config(options)
       set_authorization_header(options)
       binding.b
-      res = Double2.new.double('http response double', {code: 500})
-      validate res
-      self.class.get(@endpoint + path, options)
+      # res = Double2.new.double('http response double', {code: 500})
+      # validate res
+      res = self.class.get(@endpoint + path, options)
+      pp res
+      p res.class
+      binding.b
       validate self.class.get(@endpoint + path, options)
     end
 
