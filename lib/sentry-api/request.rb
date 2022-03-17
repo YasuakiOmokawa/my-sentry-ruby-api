@@ -115,8 +115,8 @@ module SentryApi
       parsed = response.parsed_response
       parsed.client = self if parsed.respond_to?(:client=)
       parsed.parse_headers!(response.headers) if parsed.respond_to?(:parse_headers!)
-      binding.b
       parsed
+      binding.b
     end
 
     # Sets a base_uri and default_params for requests.
