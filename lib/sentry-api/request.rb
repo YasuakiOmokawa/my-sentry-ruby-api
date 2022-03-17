@@ -112,10 +112,10 @@ module SentryApi
                     end
       fail error_klass.new(response) if error_klass
 
-      binding.b
       parsed = response.parsed_response
       parsed.client = self if parsed.respond_to?(:client=)
       parsed.parse_headers!(response.headers) if parsed.respond_to?(:parse_headers!)
+      binding.b
       parsed
     end
 
