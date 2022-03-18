@@ -48,14 +48,6 @@ module SentryApi
     def get(path, options={})
       set_httparty_config(options)
       set_authorization_header(options)
-      binding.b
-      # res = Double2.new.double('http response double', {code: 500})
-      # validate res
-      res = self.class.get(@endpoint + path, options)
-      pp res
-      p res.class
-      validate res
-      binding.b
       validate self.class.get(@endpoint + path, options)
     end
 
@@ -116,7 +108,6 @@ module SentryApi
       parsed.client = self if parsed.respond_to?(:client=)
       parsed.parse_headers!(response.headers) if parsed.respond_to?(:parse_headers!)
       parsed
-      binding.b
     end
 
     # Sets a base_uri and default_params for requests.
