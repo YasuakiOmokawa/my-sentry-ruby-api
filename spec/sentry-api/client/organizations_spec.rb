@@ -22,7 +22,6 @@ describe SentryApi::Client do
   describe ".organization_projects" do
     before do
       stub_get("/organizations/sentry-sc/projects/", "organization_projects")
-      # stub_get("/organizations/?member=false", "organizations")
       @projects = SentryApi.organization_projects
     end
 
@@ -57,6 +56,8 @@ describe SentryApi::Client do
   describe ".update_organization" do
     before do
       stub_put("/organizations/sentry-sc/", "update_organization")
+      binding.b
+      SentryApi.no_defined_method
       @edited_organization = SentryApi.update_organization({name: "Impeccably Designated"})
     end
 
