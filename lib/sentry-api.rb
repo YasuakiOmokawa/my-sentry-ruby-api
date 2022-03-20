@@ -20,8 +20,9 @@ module SentryApi
 
   # Delegate to Sentry::Client
   def self.method_missing(method, *args, &block)
-    return super unless client.respond_to?(method)
-    client.send(method, *args, &block)
+    c = client
+    return super unless c.respond_to?(method)
+    c.send(method, *args, &block)
   end
 
   # Delegate to Sentry::Client
