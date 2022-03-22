@@ -15,15 +15,15 @@ module SentryApi
   #
   # @return [Sentry::Client]
   def self.client(options={})
-    SentryApi::Client.new(options)
+    @client ||= SentryApi::Client.new(options)
   end
 
   # Delegate to Sentry::Client
   def self.method_missing(method, *args, &block)
-    c = client
+    return super unless client.respond_to?(method)
     binding.b
-    return super unless c.respond_to?(method)
-    c.send(method, *args, &block)
+    client
+    client.send(method, *args, &block)
   end
 
   # Delegate to Sentry::Client
