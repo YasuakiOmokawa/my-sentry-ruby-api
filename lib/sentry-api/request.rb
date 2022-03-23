@@ -3,10 +3,6 @@ require 'json'
 
 module SentryApi
   # @private
-  class Double2
-    include ::RSpec::Mocks::ExampleMethods
-  end
-
   class Request
     include HTTMultiParty
 
