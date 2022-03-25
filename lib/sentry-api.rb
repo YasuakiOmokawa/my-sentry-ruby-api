@@ -16,7 +16,8 @@ module SentryApi
   # @return [Sentry::Client]
   def self.client(options={})
     # SentryApi::Client.new(options)
-    @client ||= SentryApi::Client.new(options)
+    @client ||= SentryApi::Client.new({}) if options.empty?
+    @client ? @client : SentryApi::Client.new(options)
   end
 
   # Delegate to Sentry::Client
