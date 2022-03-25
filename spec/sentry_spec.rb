@@ -9,6 +9,7 @@ describe SentryApi do
     end
 
     it "should not override each other" do
+      binding.b
       client1 = SentryApi.client(endpoint: 'https://api1.example.com', auth_token: '001')
       client2 = SentryApi.client(endpoint: 'https://api2.example.com', auth_token: '002')
       expect(client1.endpoint).to eq('https://api1.example.com')
