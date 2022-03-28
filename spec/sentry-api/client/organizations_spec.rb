@@ -56,7 +56,6 @@ describe SentryApi::Client do
   describe ".update_organization" do
     before do
       stub_put("/organizations/sentry-sc/", "update_organization")
-      binding.b
       @edited_organization = SentryApi.update_organization({name: "Impeccably Designated"})
     end
 
