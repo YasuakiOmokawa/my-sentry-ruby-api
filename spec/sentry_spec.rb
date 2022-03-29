@@ -15,6 +15,7 @@ describe SentryApi do
       expect(client2.endpoint).to eq('https://api2.example.com')
       expect(client1.auth_token).to eq('001')
       expect(client2.auth_token).to eq('002')
+      binding.b
     end
 
     it "should set auth_token to the auth_token when provided" do
