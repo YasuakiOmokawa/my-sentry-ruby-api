@@ -16,6 +16,7 @@ module SentryApi
   #
   # @return [Sentry::Client]
   def self.client(options={})
+    # TODO: f87d2bad61d504e46c267c9bbdbe48df3ecdf8ac の内容をPRあげる
     options.empty? ? empty_options_client : SentryApi::Client.new(options)
   end
 
