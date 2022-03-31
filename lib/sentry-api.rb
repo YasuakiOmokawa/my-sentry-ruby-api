@@ -28,6 +28,7 @@ module SentryApi
 
   # Delegate to Sentry::Client
   def respond_to_missing?(method_name, include_private = false)
+    binding.b
     client.respond_to?(method_name) || super
   end
 
