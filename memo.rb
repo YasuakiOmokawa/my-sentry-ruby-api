@@ -76,3 +76,24 @@ methods = {1 => Foo.instance_method(:foo),
 p methods[1].bind(Foo.new).call      # => "foo"
 p methods[2].bind(Foo.new).call      # => "bar"
 p methods[3].bind(Foo.new).call      # => "baz"
+
+
+class Sample
+  def method_missing(name, *args)
+    if name =~ /^to_*/
+      [name, *args] # => [:to_sample, "sample args1", "sample args2"]
+      # return
+    else
+      super
+    end
+  end
+
+  def respond_to_missing?(sym, include_private)
+    (sym =~ /^to_*/) ? true : super
+  end
+end
+
+s = Sample.new
+s.to_sample("sample args1", "sample args2")
+s.respond_to?(:to_sample)  # => true
+s.respond_to?(:sample)    # => false
