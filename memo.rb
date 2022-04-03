@@ -97,3 +97,31 @@ s = Sample.new
 s.to_sample("sample args1", "sample args2")
 s.respond_to?(:to_sample)  # => true
 s.respond_to?(:sample)    # => false
+
+
+module Kernel
+  FOO = 1
+end
+
+# Object は include したモジュールの定数に対しても
+# true を返す
+p Object.const_defined?(:FOO)   # => true
+
+module Bar
+  BAR = 1
+end
+class Object
+  include Bar
+end
+# ユーザ定義のモジュールに対しても同様
+p Object.const_defined?(:BAR)   # => true
+
+class Baz
+  include Bar
+end
+# Object 以外でも同様になった
+# 第二引数のデフォルト値が true であるため
+p Baz.const_defined?(:BAR)      # => true
+
+# 第二引数を false にした場合
+p Baz.const_defined?(:BAR, false)   # => false

@@ -67,7 +67,8 @@ describe SentryApi do
     it "delegates the method to Sentry::Request" do
       SentryApi.endpoint = 'https://api.example.com'
       binding.b
-      request = class_spy(SentryApi::Request).as_stubbed_const
+      request = class_spy(SentryApi::Request)
+      request_stubbed = request.as_stubbed_const
 
       SentryApi.http_proxy('fazbearentertainment.com', 1987, 'ffazbear', 'itsme')
       expect(request).to have_received(:http_proxy).
