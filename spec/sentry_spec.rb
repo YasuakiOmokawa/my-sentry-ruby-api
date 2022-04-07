@@ -68,6 +68,7 @@ describe SentryApi do
       SentryApi.endpoint = 'https://api.example.com'
       binding.b
       request = class_spy(SentryApi::Request)
+      binding.b
       request_stubbed = request.as_stubbed_const
 
       SentryApi.http_proxy('fazbearentertainment.com', 1987, 'ffazbear', 'itsme')
