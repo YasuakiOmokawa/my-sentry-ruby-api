@@ -68,12 +68,36 @@ describe SentryApi do
       SentryApi.endpoint = 'https://api.example.com'
       binding.b
       request = class_spy(SentryApi::Request)
-      binding.b
       request_stubbed = request.as_stubbed_const
+      binding.b
 
       SentryApi.http_proxy('fazbearentertainment.com', 1987, 'ffazbear', 'itsme')
       expect(request).to have_received(:http_proxy).
           with('fazbearentertainment.com', 1987, 'ffazbear', 'itsme')
+    end
+  end
+
+  describe "stubbed_const_test" do
+    class Aki
+      def self.test_aki
+        "test_aki"
+      end
+
+      def test
+        "instance test"
+      end
+    end
+
+    it "class_double as_stubbed_const" do
+      binding.b
+      pp Aki # Aki
+      Aki.test_aki # test_aki
+      aki_double = class_double("Aki").as_stubbed_const
+      allow(aki_double).to receive(:test_aki).and_return("stub test") # allowしないと `test_aki` メソッドは定義されていないものとしてエラーとなる
+
+      pp aki_double # #<ClassDouble(Aki) (anonymous)>
+      pp Aki # #<ClassDouble(Aki) (anonymous)> ★as_stubbed_constをすると定数としてのクラスを置き換える
+      pp Aki.test_aki # stub test
     end
   end
 end
