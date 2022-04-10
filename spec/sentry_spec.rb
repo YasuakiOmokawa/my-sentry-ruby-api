@@ -88,16 +88,19 @@ describe SentryApi do
       end
     end
 
-    it "class_double as_stubbed_const" do
-      binding.b
-      pp Aki # Aki
-      Aki.test_aki # test_aki
-      aki_double = class_double("Aki").as_stubbed_const
-      allow(aki_double).to receive(:test_aki).and_return("stub test") # allowしないと `test_aki` メソッドは定義されていないものとしてエラーとなる
-
-      pp aki_double # #<ClassDouble(Aki) (anonymous)>
+    it "class_spy as_stubbed_const" do
+      aki_spy = class_spy(Aki).as_stubbed_const
       pp Aki # #<ClassDouble(Aki) (anonymous)> ★as_stubbed_constをすると定数としてのクラスを置き換える
-      pp Aki.test_aki # stub test
+      Aki.test_aki
+
+      expect(aki_spy).to have_received(:test_aki)
+    end
+
+    example 'doubleはメソッドを動的に定義できる' do
+      aki_double = double('Aki')
+      allow(aki_double).to receive(:test_aki2).and_return('hoge')
+
+      expect(aki_double.test_aki2).to eq 'hoge'
     end
   end
 end
