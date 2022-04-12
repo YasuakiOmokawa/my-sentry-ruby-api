@@ -86,6 +86,7 @@ describe SentryApi do
     end
 
     it "class_spy as_stubbed_const" do
+      binding.b
       aki_spy = class_spy(Aki).as_stubbed_const
       pp Aki # #<ClassDouble(Aki) (anonymous)> ★as_stubbed_constをすると定数としてのクラスを置き換える
       Aki.test_aki
