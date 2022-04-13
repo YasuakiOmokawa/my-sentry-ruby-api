@@ -66,10 +66,10 @@ describe SentryApi do
   describe ".http_proxy" do
     it "delegates the method to Sentry::Request" do
       SentryApi.endpoint = 'https://api.example.com'
-      class_spy(SentryApi::Request).as_stubbed_const
+      request = class_spy(SentryApi::Request).as_stubbed_const
 
       SentryApi.http_proxy('fazbearentertainment.com', 1987, 'ffazbear', 'itsme')
-      expect(SentryApi::Request).to have_received(:http_proxy).
+      expect(request).to have_received(:http_proxy).
           with('fazbearentertainment.com', 1987, 'ffazbear', 'itsme')
     end
   end
@@ -86,7 +86,6 @@ describe SentryApi do
     end
 
     it "class_spy as_stubbed_const" do
-      binding.b
       aki_spy = class_spy(Aki).as_stubbed_const
       pp Aki # #<ClassDouble(Aki) (anonymous)> ★as_stubbed_constをすると定数としてのクラスを置き換える
       Aki.test_aki
